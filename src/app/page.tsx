@@ -6,7 +6,7 @@ import { categories, products } from "@/lib/web-mock-data";
 import { useSearch } from "@/context/search-context";
 
 export default function Home() {
-  const { searchQuery, selectedCategory, setSelectedCategory } = useSearch();
+  const { searchQuery, setSearchQuery, selectedCategory, setSelectedCategory } = useSearch();
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
