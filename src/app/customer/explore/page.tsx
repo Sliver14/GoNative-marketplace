@@ -18,7 +18,7 @@ export default function ExplorePage() {
             <span
               key={tag}
               className={`rounded-full px-4 py-2 text-xs font-black ${
-                index === 0 ? "bg-[#12D16E] text-[#FFD700]" : "bg-zinc-100 text-zinc-700"
+                index === 0 ? "bg-[#12D16E] text-white" : "bg-zinc-100 text-zinc-700"
               }`}
             >
               {tag}

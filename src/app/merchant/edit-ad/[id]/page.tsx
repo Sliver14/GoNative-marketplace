@@ -48,7 +48,7 @@ export default function EditAdPage() {
 
         <section className="grid gap-6 rounded-[2.5rem] border border-zinc-100 bg-white p-10 shadow-sm">
           <div className="grid gap-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Product Name</label>
+            <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Product Name</label>
             <input 
               required
               defaultValue={product.name}
@@ -58,13 +58,13 @@ export default function EditAdPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="grid gap-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Category</label>
+              <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Category</label>
               <select defaultValue={product.category} className="w-full rounded-2xl bg-zinc-50 border border-transparent px-5 py-4 text-sm font-bold outline-none focus:ring-2 focus:ring-[#12D16E]/20 focus:border-[#12D16E] transition-all appearance-none cursor-pointer">
                 {categories.map(cat => <option key={cat.id}>{cat.name}</option>)}
               </select>
             </div>
             <div className="grid gap-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Price (₦)</label>
+              <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Price (₦)</label>
               <input 
                 required
                 type="number"
@@ -75,7 +75,7 @@ export default function EditAdPage() {
           </div>
 
           <div className="grid gap-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Description</label>
+            <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Description</label>
             <textarea 
               required
               rows={4}
@@ -92,12 +92,11 @@ export default function EditAdPage() {
             >
               CANCEL
             </button>
-            <button 
+            <button
               type="submit"
               disabled={isLoading}
-              className={`flex-[2] rounded-2xl bg-[#12D16E] py-5 text-sm font-black text-[#FFD700] shadow-lg shadow-[#12D16E]/20 transition-all active:scale-95 ${isLoading ? "opacity-70 cursor-not-allowed" : "hover:brightness-105"}`}
-            >
-              {isLoading ? "SAVING CHANGES..." : "SAVE CHANGES"}
+              className={`flex-[2] rounded-2xl bg-[#12D16E] py-5 text-sm font-black text-white shadow-lg shadow-[#12D16E]/20 transition-all active:scale-95 ${isLoading ? "opacity-70 cursor-not-allowed" : "hover:brightness-105"}`}
+            >              {isLoading ? "SAVING CHANGES..." : "SAVE CHANGES"}
             </button>
           </div>
         </section>

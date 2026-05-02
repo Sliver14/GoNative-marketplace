@@ -19,33 +19,33 @@ export default function PostAdPage() {
   };
 
   return (
-    <main className="web-container py-10 max-w-3xl">
-      <header className="mb-10 flex items-center gap-6">
+    <main className="web-container py-8 md:py-10 max-w-3xl">
+      <header className="mb-8 flex items-center gap-4 md:mb-10 md:gap-6">
         <button 
           onClick={() => router.back()}
-          className="grid h-12 w-12 place-items-center rounded-2xl bg-zinc-100 text-zinc-600 hover:bg-black hover:text-white transition-all shadow-sm"
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-zinc-100 text-zinc-600 hover:bg-black hover:text-white transition-all shadow-sm md:h-12 md:w-12 md:rounded-2xl"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="md:w-5 md:h-5"><path d="m15 18-6-6 6-6"/></svg>
         </button>
         <div>
-          <h1 className="text-4xl font-black tracking-tight text-zinc-900">Post a New Ad</h1>
-          <p className="mt-1 font-medium text-zinc-500">Share your fresh catch with the community</p>
+          <h1 className="text-2xl font-black tracking-tight text-zinc-900 md:text-4xl">Post a New Ad</h1>
+          <p className="mt-0.5 text-xs font-medium text-zinc-500 md:mt-1 md:text-base">Share your fresh catch with the community</p>
         </div>
       </header>
 
-      <form onSubmit={handleSubmit} className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
         {/* Image Upload Placeholder */}
-        <section className="rounded-[2.5rem] border-2 border-dashed border-zinc-200 bg-zinc-50/50 p-12 text-center transition-colors hover:border-[#12D16E]/50">
-          <div className="mx-auto mb-4 grid h-20 w-20 place-items-center rounded-3xl bg-white text-3xl shadow-sm">📸</div>
-          <h3 className="text-lg font-bold text-zinc-900">Upload Product Photos</h3>
-          <p className="mt-1 text-sm font-medium text-zinc-500">Drag and drop or click to browse</p>
+        <section className="rounded-[2rem] border-2 border-dashed border-zinc-200 bg-zinc-50/50 p-8 text-center transition-colors hover:border-[#12D16E]/50 md:rounded-[2.5rem] md:p-12">
+          <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-white text-2xl shadow-sm md:h-20 md:w-20 md:rounded-3xl md:text-3xl">📸</div>
+          <h3 className="text-base font-bold text-zinc-900 md:text-lg">Upload Product Photos</h3>
+          <p className="mt-1 text-xs font-medium text-zinc-500 md:text-sm">Drag and drop or click to browse</p>
           <input type="file" multiple className="hidden" />
-          <button type="button" className="mt-6 rounded-xl bg-black px-6 py-3 text-xs font-black tracking-widest text-white hover:bg-zinc-800 transition-colors">SELECT IMAGES</button>
+          <button type="button" className="mt-4 rounded-xl bg-black px-5 py-2.5 text-xs font-black tracking-widest text-white hover:bg-zinc-800 transition-colors md:mt-6 md:px-6 md:py-3 md:text-xs">SELECT IMAGES</button>
         </section>
 
-        <section className="grid gap-6 rounded-[2.5rem] border border-zinc-100 bg-white p-10 shadow-sm">
+        <section className="grid gap-6 rounded-[2rem] border border-zinc-100 bg-white p-6 shadow-sm md:rounded-[2.5rem] md:p-10">
           <div className="grid gap-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Product Name</label>
+            <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Product Name</label>
             <input 
               required
               className="w-full rounded-2xl bg-zinc-50 border border-transparent px-5 py-4 text-sm font-bold outline-none focus:ring-2 focus:ring-[#12D16E]/20 focus:border-[#12D16E] transition-all"
@@ -55,13 +55,13 @@ export default function PostAdPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="grid gap-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Category</label>
+              <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Category</label>
               <select className="w-full rounded-2xl bg-zinc-50 border border-transparent px-5 py-4 text-sm font-bold outline-none focus:ring-2 focus:ring-[#12D16E]/20 focus:border-[#12D16E] transition-all appearance-none cursor-pointer">
                 {categories.map(cat => <option key={cat.id}>{cat.name}</option>)}
               </select>
             </div>
             <div className="grid gap-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Price (₦)</label>
+              <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Price (₦)</label>
               <input 
                 required
                 type="number"
@@ -72,7 +72,7 @@ export default function PostAdPage() {
           </div>
 
           <div className="grid gap-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-1">Description</label>
+            <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ml-1">Description</label>
             <textarea 
               required
               rows={4}
@@ -84,7 +84,7 @@ export default function PostAdPage() {
           <button 
             type="submit"
             disabled={isLoading}
-            className={`mt-4 w-full rounded-2xl bg-[#12D16E] py-5 text-sm font-black text-[#FFD700] shadow-lg shadow-[#12D16E]/20 transition-all active:scale-95 ${isLoading ? "opacity-70 cursor-not-allowed" : "hover:brightness-105"}`}
+            className={`mt-4 w-full rounded-2xl bg-[#12D16E] py-5 text-sm font-black text-white shadow-lg shadow-[#12D16E]/20 transition-all active:scale-95 ${isLoading ? "opacity-70 cursor-not-allowed" : "hover:brightness-105"}`}
           >
             {isLoading ? "PUBLISHING..." : "PUBLISH ADVERT"}
           </button>

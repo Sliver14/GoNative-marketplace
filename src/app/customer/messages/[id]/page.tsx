@@ -42,7 +42,7 @@ export default function CustomerMessagePage({ params }: CustomerMessagePageProps
         <img src={convo.avatar} alt={convo.name} className="h-10 w-10 rounded-full object-cover" />
         <div className="flex-1">
           <p className="text-sm font-black">{convo.name}</p>
-          <p className="text-[10px] font-black uppercase text-[#12D16E]">Online</p>
+          <p className="text-xs font-black uppercase text-[#12D16E]">Online</p>
         </div>
         <button type="button" className="text-xl">
           📞
@@ -53,9 +53,9 @@ export default function CustomerMessagePage({ params }: CustomerMessagePageProps
         <img src={order.product.image} alt={order.product.name} className="h-11 w-11 rounded-xl" />
         <div className="min-w-0 flex-1">
           <p className="truncate text-xs font-black">{order.product.name}</p>
-          <p className="text-[10px] font-black text-[#12D16E]">₦{order.product.price}</p>
+          <p className="text-xs font-black text-[#12D16E]">₦{order.product.price}</p>
         </div>
-        <span className="rounded-lg bg-white/10 px-2 py-1 text-[10px] font-black">
+        <span className="rounded-lg bg-white/10 px-2 py-1 text-xs font-black">
           {order.status.toUpperCase()}
         </span>
       </div>
@@ -71,7 +71,7 @@ export default function CustomerMessagePage({ params }: CustomerMessagePageProps
             }`}
           >
             <p className="text-sm font-semibold">{message.text}</p>
-            <p className="mt-1 text-right text-[10px] font-black opacity-60">{message.time}</p>
+            <p className="mt-1 text-right text-xs font-black opacity-60">{message.time}</p>
           </article>
         ))}
       </section>

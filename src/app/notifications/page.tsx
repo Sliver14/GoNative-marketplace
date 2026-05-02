@@ -59,7 +59,7 @@ export default function NotificationsPage() {
                 <p className={`text-sm font-semibold ${item.unread ? "text-black" : "text-zinc-700"}`}>
                   {item.title}
                 </p>
-                <p className="text-[10px] font-medium text-zinc-400">{item.time}</p>
+                <p className="text-xs font-medium text-zinc-400">{item.time}</p>
               </div>
               <p className="text-xs font-medium leading-5 text-zinc-500">{item.body}</p>
             </div>

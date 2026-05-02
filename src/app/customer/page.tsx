@@ -98,7 +98,7 @@ export default function CustomerHomePage() {
           <p className="text-xs font-black uppercase text-zinc-500">
             {filteredProducts.length} listings nearby
           </p>
-          <span className="rounded-lg bg-[#E8FFF3] px-2 py-1 text-[10px] font-black text-[#12D16E]">
+          <span className="rounded-lg bg-[#E8FFF3] px-2 py-1 text-xs font-black text-[#12D16E]">
             Nearby
           </span>
         </div>

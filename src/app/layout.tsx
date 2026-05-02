@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { BottomNav } from "@/components/bottom-nav";
 import { AuthProvider } from "@/context/auth-context";
 import { SearchProvider } from "@/context/search-context";
-import { MessagesModal } from "@/components/messages-modal";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,12 +32,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#fdfdfd] text-zinc-950">
+      <body className="min-h-full bg-[#fdfdfd] text-zinc-950 flex flex-col pb-20 md:pb-0">
         <AuthProvider>
           <SearchProvider>
             <SiteHeader />
-            {children}
-            <MessagesModal />
+            <div className="flex-1">
+              {children}
+            </div>
+            <SiteFooter />
+            <BottomNav />
           </SearchProvider>
         </AuthProvider>
       </body>

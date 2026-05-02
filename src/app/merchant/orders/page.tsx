@@ -26,7 +26,7 @@ export default function MerchantOrdersPage() {
                 <p className="text-lg font-black"># {order.id}</p>
                 <p className="text-xs font-black uppercase text-zinc-500">{order.date}</p>
               </div>
-              <span className="rounded-xl bg-[#FFFBE6] px-3 py-1 text-[10px] font-black uppercase text-[#FFD700]">
+              <span className="rounded-xl bg-[#FFFBE6] px-3 py-1 text-xs font-black uppercase text-[#FFD700]">
                 {order.status}
               </span>
             </div>

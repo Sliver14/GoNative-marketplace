@@ -32,7 +32,7 @@ export default function ProfilePage() {
                 <h2 className="text-2xl font-bold text-zinc-900">{user?.name}</h2>
                 <p className="font-medium text-zinc-400">Account ID: {user?.id}</p>
                 <div className="mt-2 flex items-center gap-2">
-                  <span className="rounded-full bg-[#E8FFF3] px-3 py-1 text-[10px] font-semibold text-[#12D16E]">
+                  <span className="rounded-full bg-[#E8FFF3] px-3 py-1 text-xs font-semibold text-[#12D16E]">
                     VERIFIED USER
                   </span>
                 </div>
@@ -46,7 +46,7 @@ export default function ProfilePage() {
             
             <div className="grid gap-6 md:grid-cols-2">
               <div className="grid gap-2">
-                <label className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">Full Name</label>
+                <label className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Full Name</label>
                 <input
                   type="text"
                   defaultValue={user?.name}
@@ -54,7 +54,7 @@ export default function ProfilePage() {
                 />
               </div>
               <div className="grid gap-2">
-                <label className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">Phone Number</label>
+                <label className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Phone Number</label>
                 <input
                   type="tel"
                   placeholder="+234 ..."
@@ -64,7 +64,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="grid gap-2">
-              <label className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">Email Address</label>
+              <label className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Email Address</label>
               <input
                 type="email"
                 disabled

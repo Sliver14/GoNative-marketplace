@@ -23,14 +23,14 @@ export default function MerchantMessagesPage() {
             <div className="min-w-0 flex-1">
               <div className="flex justify-between gap-3">
                 <p className="truncate text-sm font-black">{conversation.name}</p>
-                <p className="text-[10px] font-black text-zinc-400">{conversation.time}</p>
+                <p className="text-xs font-black text-zinc-400">{conversation.time}</p>
               </div>
               <p className="truncate text-xs font-semibold text-zinc-500">
                 {conversation.lastMessage}
               </p>
             </div>
             {conversation.unread > 0 && (
-              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#12D16E] text-[10px] font-black text-white">
+              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#12D16E] text-xs font-black text-white">
                 {conversation.unread}
               </span>
             )}

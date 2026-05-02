@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useAuth } from "@/context/auth-context";
 import { useSearch } from "@/context/search-context";
 import { categories } from "@/lib/web-mock-data";
@@ -8,15 +9,17 @@ import { categories } from "@/lib/web-mock-data";
 export function SiteHeader() {
   const { user, logout, isAuthenticated } = useAuth();
   const { searchQuery, setSearchQuery, selectedCategory, setSelectedCategory } = useSearch();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-100 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6 md:gap-8">
-        <Link href="/" className="text-2xl font-bold tracking-tighter text-[#12D16E] hover:opacity-80 transition-opacity">
-          GONATIVE MARKETPLACE
+        <Link href="/" className="text-xl font-extrabold tracking-tighter text-[#12D16E] hover:opacity-80 transition-opacity md:text-2xl shrink-0">
+          <span className="hidden xs:inline">GONATIVE</span> MARKET<span className="hidden xs:inline">PLACE</span>
+          <span className="xs:hidden">G-MARKET</span>
         </Link>
 
-        {/* Global Search Bar - Keyword + Location + Category */}
+        {/* Global Search Bar - Desktop */}
         <div className="hidden flex-1 items-center gap-0 overflow-hidden rounded-2xl bg-zinc-100 lg:flex focus-within:ring-2 focus-within:ring-[#12D16E]/20 transition-all border border-transparent focus-within:border-zinc-200">
           {/* Keyword Search */}
           <div className="flex flex-[1.5] items-center gap-2 border-r border-zinc-200 px-4 py-2.5">
@@ -72,7 +75,7 @@ export function SiteHeader() {
             <select 
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="h-full bg-zinc-100 pl-4 pr-8 text-[10px] font-semibold uppercase tracking-wider text-zinc-500 outline-none cursor-pointer hover:bg-zinc-200 transition-colors appearance-none border-none"
+              className="h-full bg-zinc-100 pl-4 pr-8 text-xs font-semibold uppercase tracking-wider text-zinc-500 outline-none cursor-pointer hover:bg-zinc-200 transition-colors appearance-none border-none"
             >
               <option>All</option>
               {categories.map(cat => (
@@ -88,10 +91,42 @@ export function SiteHeader() {
             SEARCH
           </button>
         </div>
-        <nav className="flex items-center gap-2 md:gap-5">
+
+        <nav className="flex items-center gap-1 md:gap-5">
+          {/* Mobile Search Toggle */}
+          <button 
+            onClick={() => setIsSearchOpen(!isSearchOpen)}
+            className="grid h-10 w-10 place-items-center rounded-xl text-zinc-500 hover:bg-zinc-100 hover:text-black transition-all lg:hidden"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
+
+          {/* Mobile Only: Saved & Notifications */}
+          <div className="flex items-center gap-0.5 md:hidden">
+            <Link
+              href="/dashboard?tab=saved"
+              className="grid h-10 w-10 place-items-center rounded-xl text-zinc-500 hover:bg-zinc-100"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </Link>
+            <Link
+              href="/dashboard?tab=notifications"
+              className="grid h-10 w-10 place-items-center rounded-xl text-zinc-500 hover:bg-zinc-100"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+              </svg>
+            </Link>
+          </div>
+
           {isAuthenticated ? (
             <>
-              <div className="flex items-center gap-1 md:gap-2">
+              <div className="hidden items-center gap-0.5 sm:gap-1 md:flex md:gap-2">
                 {/* My Adverts Icon */}
                 <Link
                   href="/dashboard?tab=listings"
@@ -131,7 +166,7 @@ export function SiteHeader() {
 
               <div className="h-6 w-px bg-zinc-200 mx-1 hidden md:block" />
 
-              <div className="relative group">
+              <div className="relative group hidden md:block">
                 <button className="flex items-center gap-2 py-2">
                   <img 
                     src={user?.avatar} 
@@ -145,7 +180,7 @@ export function SiteHeader() {
                   <div className="w-48 overflow-hidden rounded-2xl border border-zinc-100 bg-white shadow-xl">
                     <div className="px-4 py-3 border-b border-zinc-50">
                       <p className="text-xs font-bold text-zinc-900 truncate">{user?.name}</p>
-                      <p className="text-[10px] font-medium text-zinc-400 capitalize">{user?.role.toLowerCase()}</p>
+                      <p className="text-xs font-medium text-zinc-400 capitalize">{user?.role.toLowerCase()}</p>
                     </div>
                     <div className="p-1">
                       <Link href="/dashboard?tab=listings" className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-zinc-600 hover:bg-zinc-50 hover:text-black transition-colors">
@@ -180,7 +215,7 @@ export function SiteHeader() {
 
               <Link
                 href="/merchant/post-ad"
-                className="ml-2 flex items-center gap-2 rounded-xl bg-[#12D16E] px-4 py-2.5 md:px-6 text-sm font-bold text-[#FFD700] transition-all active:scale-95 shadow-lg shadow-[#12D16E]/20"
+                className="hidden md:flex ml-1 items-center gap-2 rounded-xl bg-[#12D16E] px-3 py-2 md:px-6 md:py-2.5 text-sm font-bold text-[#FFD700] transition-all active:scale-95 shadow-lg shadow-[#12D16E]/20"
               >
                 <span className="text-xl">+</span>
                 <span className="hidden sm:inline">SELL</span>
@@ -189,9 +224,9 @@ export function SiteHeader() {
           ) : (
             <Link
               href="/auth/login"
-              className="flex items-center gap-2 rounded-xl bg-black px-6 py-2.5 text-sm font-bold text-white transition-all active:scale-95 shadow-xl"
+              className="flex items-center gap-2 rounded-xl bg-black px-4 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-bold text-white transition-all active:scale-95 shadow-xl"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="hidden xs:block">
                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />
               </svg>
@@ -199,6 +234,41 @@ export function SiteHeader() {
             </Link>
           )}
         </nav>
+      </div>
+
+      {/* Mobile Search Bar - Expandable */}
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${isSearchOpen ? 'max-h-20 border-t border-zinc-100' : 'max-h-0'}`}>
+        <div className="px-4 py-3">
+          <div className="flex items-center gap-2 overflow-hidden rounded-xl bg-zinc-100 px-3 py-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-zinc-400"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search seafood..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-transparent text-xs font-medium outline-none placeholder:text-zinc-400 text-zinc-900"
+            />
+            {searchQuery && (
+              <button onClick={() => setSearchQuery("")} className="text-zinc-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            )}
+          </div>
+        </div>
       </div>
     </header>
   );

@@ -20,11 +20,10 @@ export default function MyAdvertsPage() {
             {user?.name}, manage your listings, sales, and account from here.
           </p>
         </div>
-        <Link
+        <Link 
           href="/merchant/post-ad"
-          className="flex items-center justify-center gap-2 rounded-2xl bg-[#12D16E] px-8 py-4 text-sm font-bold text-[#FFD700] transition-all active:scale-95 shadow-md"
-        >
-          <span className="text-xl">+</span>
+          className="flex items-center justify-center gap-2 rounded-2xl bg-[#12D16E] px-8 py-4 text-sm font-bold text-white transition-all active:scale-95 shadow-md"
+        >          <span className="text-xl">+</span>
           POST A NEW AD
         </Link>
       </header>
@@ -109,7 +108,7 @@ export default function MyAdvertsPage() {
                 <div className="flex items-center gap-6">
                   <img src={order.product.image} className="h-20 w-20 rounded-2xl object-cover" />
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
                       {order.id}
                     </p>
                     <h3 className="text-lg font-semibold">{order.product.name}</h3>
@@ -119,7 +118,7 @@ export default function MyAdvertsPage() {
                 <div className="text-right">
                   <p className="text-xl font-bold">₦{order.product.price.toLocaleString()}</p>
                   <span
-                    className={`mt-2 inline-block rounded-full px-4 py-1.5 text-[10px] font-semibold uppercase tracking-wider ${
+                    className={`mt-2 inline-block rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider ${
                       order.status === "Completed"
                         ? "bg-[#E8FFF3] text-[#12D16E]"
                         : "bg-zinc-100 text-zinc-500"
@@ -153,7 +152,7 @@ export default function MyAdvertsPage() {
               </div>
               <div className="flex-1 space-y-6">
                 <div className="grid gap-2">
-                  <label className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
+                  <label className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
                     Display Name
                   </label>
                   <input
@@ -162,7 +161,7 @@ export default function MyAdvertsPage() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <label className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
+                  <label className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
                     Contact Email
                   </label>
                   <input

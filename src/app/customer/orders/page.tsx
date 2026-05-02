@@ -32,10 +32,10 @@ export default function CustomerOrdersPage() {
             <div className="mb-4 flex items-start justify-between">
               <div>
                 <p className="text-sm font-black">ORDER # {order.id}</p>
-                <p className="text-[10px] font-black uppercase text-zinc-500">{order.date}</p>
+                <p className="text-xs font-black uppercase text-zinc-500">{order.date}</p>
               </div>
               <span
-                className={`rounded-xl px-3 py-1 text-[10px] font-black uppercase ${
+                className={`rounded-xl px-3 py-1 text-xs font-black uppercase ${
                   order.status === "Completed"
                     ? "bg-[#E8FFF3] text-[#12D16E]"
                     : "bg-[#FFFBE6] text-[#FFD700]"

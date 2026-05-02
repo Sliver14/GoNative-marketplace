@@ -127,7 +127,7 @@ export function MessagesModal() {
                       }`}
                     >
                       {msg.text}
-                      <p className={`mt-1 text-[8px] font-medium uppercase ${msg.sent ? "text-[#FFD700]/70" : "text-zinc-300"}`}>
+                      <p className={`mt-1 text-xs font-medium uppercase ${msg.sent ? "text-[#FFD700]/70" : "text-zinc-300"}`}>
                         {msg.time}
                       </p>
                     </div>

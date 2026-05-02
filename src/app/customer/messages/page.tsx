@@ -119,7 +119,7 @@ export default function CustomerMessagesPage() {
                       }`}
                     >
                       {msg.text}
-                      <p className={`mt-2 text-[8px] font-medium uppercase ${msg.sent ? "text-black/40" : "text-zinc-300"}`}>
+                      <p className={`mt-2 text-xs font-medium uppercase ${msg.sent ? "text-black/40" : "text-zinc-300"}`}>
                         {msg.time}
                       </p>
                     </div>

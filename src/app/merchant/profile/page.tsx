@@ -22,14 +22,14 @@ export default function MerchantProfilePage() {
                 alt="Joe's Fresh Catch"
                 className="h-full w-full rounded-full border-4 border-[#12D16E] object-cover"
               />
-              <span className="absolute bottom-1 right-1 grid h-8 w-8 place-items-center rounded-full bg-[#12D16E] text-[#FFD700]">
+              <span className="absolute bottom-1 right-1 grid h-8 w-8 place-items-center rounded-full bg-[#12D16E] text-white">
                 ✓
               </span>
             </div>
             <h1 className="mt-6 text-2xl font-black">Joe&apos;s Fresh Catch</h1>
             <p className="mt-1 text-sm font-bold text-zinc-400">Merchant since May 2025</p>
             <div className="mt-4 flex items-center justify-center gap-2">
-              <span className="rounded-full bg-[#12D16E] px-3 py-1 text-[10px] font-black text-[#FFD700]">
+              <span className="rounded-full bg-[#12D16E] px-3 py-1 text-xs font-black text-white">
                 VERIFIED PLUG
               </span>
             </div>
@@ -72,7 +72,7 @@ export default function MerchantProfilePage() {
               <article key={stat.label} className="rounded-3xl border border-zinc-100 bg-white p-6 shadow-sm">
                 <span className="mb-3 block text-2xl">{stat.icon}</span>
                 <p className="text-2xl font-black">{stat.value}</p>
-                <p className="text-[10px] font-black uppercase tracking-wider text-zinc-400">{stat.label}</p>
+                <p className="text-xs font-black uppercase tracking-wider text-zinc-400">{stat.label}</p>
               </article>
             ))}
           </section>
@@ -85,7 +85,7 @@ export default function MerchantProfilePage() {
               </div>
               <Link
                 href="/merchant/post-ad"
-                className="rounded-2xl bg-[#12D16E] px-8 py-4 text-sm font-black text-[#FFD700] transition-transform active:scale-95"
+                className="rounded-2xl bg-[#12D16E] px-8 py-4 text-sm font-black text-white transition-transform active:scale-95"
               >
                 POST A NEW AD
               </Link>

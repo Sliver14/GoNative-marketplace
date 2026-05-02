@@ -67,40 +67,42 @@ function DashboardContent() {
       {/* Left Sidebar */}
       <aside className="w-full lg:w-80 shrink-0 space-y-6">
         {/* Identity Block */}
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-zinc-100 bg-white p-8 shadow-sm">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-zinc-100 bg-white p-6 md:p-8 shadow-sm">
           <button 
             onClick={() => setActiveTab("settings")}
             className="absolute right-6 top-6 grid h-10 w-10 place-items-center rounded-xl bg-zinc-50 text-zinc-400 hover:bg-zinc-100 hover:text-black transition-all"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
           </button>
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-row items-center gap-4 text-left lg:flex-col lg:text-center">
             <div className="relative">
               <img 
                 src={user?.avatar} 
-                className="h-32 w-32 rounded-full border-4 border-[#12D16E] object-cover shadow-lg" 
+                className="h-20 w-20 rounded-full border-4 border-[#12D16E] object-cover shadow-lg lg:h-32 lg:w-32" 
               />
-              <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full bg-[#12D16E] border-4 border-white" />
+              <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-[#12D16E] border-4 border-white lg:h-6 lg:w-6" />
             </div>
-            <h2 className="mt-6 text-xl font-bold text-zinc-900">{user?.name}</h2>
-            <p className="mt-1 font-medium text-zinc-500">0812 345 6789</p>
+            <div>
+              <h2 className="text-lg font-bold text-zinc-900 lg:mt-6 lg:text-xl">{user?.name}</h2>
+              <p className="mt-0.5 text-xs font-medium text-zinc-500 lg:mt-1 lg:text-sm">0812 345 6789</p>
+            </div>
           </div>
         </div>
 
-        {/* Labeled Menu */}
-        <nav className="rounded-[2.5rem] border border-zinc-100 bg-white p-4 shadow-sm">
-          <ul className="space-y-2">
+        {/* Labeled Menu - Scrollable on mobile */}
+        <nav className="rounded-[2.5rem] border border-zinc-100 bg-white p-2 lg:p-4 shadow-sm overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+          <ul className="flex flex-row gap-2 lg:flex-col lg:space-y-2">
             {menuItems.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className="shrink-0 lg:w-full">
                 <button
                   onClick={() => setActiveTab(item.id as TabType)}
-                  className={`flex w-full items-center gap-4 rounded-2xl px-5 py-4 text-sm font-bold transition-all ${
+                  className={`flex items-center gap-3 rounded-2xl px-5 py-3.5 text-xs font-black uppercase tracking-widest transition-all lg:w-full lg:gap-4 lg:py-4 lg:text-sm ${
                     activeTab === item.id
                       ? "bg-black text-white shadow-lg shadow-black/10"
                       : "text-zinc-500 hover:bg-zinc-50 hover:text-black"
                   }`}
                 >
-                  <span className="text-xl">{item.icon}</span>
+                  <span className="text-xl lg:text-2xl">{item.icon}</span>
                   {item.label}
                 </button>
               </li>
@@ -117,7 +119,7 @@ function DashboardContent() {
                <h2 className="text-sm font-black uppercase tracking-[0.2em] text-zinc-400">Active Listings</h2>
                <Link
                 href="/merchant/post-ad"
-                className="rounded-2xl bg-[#12D16E] px-6 py-3 text-[10px] font-black tracking-widest text-[#FFD700] transition-transform active:scale-95 shadow-md"
+                className="rounded-2xl bg-[#12D16E] px-6 py-3 text-xs font-black tracking-widest text-white transition-transform active:scale-95 shadow-md"
               >
                 + POST A NEW AD
               </Link>
@@ -139,17 +141,17 @@ function DashboardContent() {
                      <div className="mt-5 flex flex-wrap gap-2">
                        <Link 
                         href={`/merchant/edit-ad/${product.id}`}
-                        className="rounded-xl bg-zinc-50 px-5 py-2.5 text-[10px] font-black tracking-widest hover:bg-black hover:text-white transition-colors"
+                        className="rounded-xl bg-zinc-50 px-5 py-2.5 text-xs font-black tracking-widest hover:bg-black hover:text-white transition-colors"
                        >
                         EDIT
                        </Link>
                        <button 
                         onClick={() => setDeletingProduct(product.id)}
-                        className="rounded-xl bg-zinc-50 px-5 py-2.5 text-[10px] font-black tracking-widest hover:bg-red-50 hover:text-red-500 transition-colors"
+                        className="rounded-xl bg-zinc-50 px-5 py-2.5 text-xs font-black tracking-widest hover:bg-red-50 hover:text-red-500 transition-colors"
                        >
                         DELETE
                        </button>
-                       <button className="sm:ml-auto rounded-xl border-2 border-[#12D16E] px-5 py-2 text-[10px] font-black tracking-widest text-[#12D16E] hover:bg-[#12D16E] hover:text-white transition-all">MARK AS SOLD</button>
+                       <button className="sm:ml-auto rounded-xl border-2 border-[#12D16E] px-5 py-2 text-xs font-black tracking-widest text-[#12D16E] hover:bg-[#12D16E] hover:text-white transition-all">MARK AS SOLD</button>
                      </div>
                    </div>
                  </article>
@@ -172,7 +174,7 @@ function DashboardContent() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
                       <h4 className="font-bold text-zinc-900 truncate">{n.title}</h4>
-                      <span className="text-[10px] font-medium text-zinc-400 uppercase tracking-widest shrink-0">{n.time}</span>
+                      <span className="text-xs font-medium text-zinc-400 uppercase tracking-widest shrink-0">{n.time}</span>
                     </div>
                     <p className="mt-1 text-sm font-medium text-zinc-500">{n.desc}</p>
                   </div>
