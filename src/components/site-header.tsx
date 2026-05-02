@@ -215,7 +215,7 @@ export function SiteHeader() {
 
               <Link
                 href="/merchant/post-ad"
-                className="hidden md:flex ml-1 items-center gap-2 rounded-xl bg-[#12D16E] px-3 py-2 md:px-6 md:py-2.5 text-sm font-bold text-[#FFD700] transition-all active:scale-95 shadow-lg shadow-[#12D16E]/20"
+                className="hidden md:flex ml-1 items-center gap-2 rounded-xl bg-[#12D16E] px-3 py-2 md:px-6 md:py-2.5 text-sm font-bold text-white transition-all active:scale-95 shadow-lg shadow-[#12D16E]/20"
               >
                 <span className="text-xl">+</span>
                 <span className="hidden sm:inline">SELL</span>
