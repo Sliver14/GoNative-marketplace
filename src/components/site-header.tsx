@@ -13,7 +13,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-zinc-100 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6 md:gap-8">
         <Link href="/" className="text-2xl font-bold tracking-tighter text-[#12D16E] hover:opacity-80 transition-opacity">
-          SEAFOOD
+          GONATIVE MARKETPLACE
         </Link>
 
         {/* Global Search Bar - Keyword + Location + Category */}
